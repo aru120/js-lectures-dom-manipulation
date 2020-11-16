@@ -21,3 +21,34 @@ const animalData = [
 ]
 
 // Get all these objects to display in the DOM
+
+function renderOneAnimal(animalObj){
+ const card = document.createElement("li")
+ card.className = "card"
+
+ card.innerHTML = `
+  <div class="image">
+    <img src="${animalObj.imageUrl}" alt="${animalObj.imageUrl}">
+    </div>
+
+    <div class="content">
+    <h4>${animalObj.name}</h4>
+    <p class="description"> ${animalObj.description} </p>
+    </div>
+
+    <button class="button donate-button" data-action="donate">
+    $<span class="donation-count">${animalObj.donations}</span> Donated
+    </button>
+ `
+
+ document.querySelector("#animal-list").append(card)
+}
+
+
+function renderAllAnimals(animalData){
+  animalData.forEach(function(animalObj){
+    renderOneAnimal(animalObj)
+  })
+}
+
+renderAllAnimals(animalData)
